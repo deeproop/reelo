@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, useState } from "react";
+import React, { useState } from "react";
 import { Dropdown } from "primereact/dropdown";
 
 export default function DropdownScroll({

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import DataFeed from "./components/DataFeed";
 import Papa from "papaparse";
 import "primereact/resources/primereact.min.css";
-import "primeicons/primeicons.css"; //icons
-import "primeflex/primeflex.css"; // flex
-import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
+import "primeicons/primeicons.css";
+import "primeflex/primeflex.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
 import Heading from "./components/Heading";
 
 function App() {

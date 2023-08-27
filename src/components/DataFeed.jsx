@@ -42,15 +42,14 @@ const DataFeed = ({ data }) => {
     setSearch(false);
     setCheck(false);
     setTimeout(() => {
-      setCheck((prevHio) => {
-        console.log(prevHio);
+      setCheck(() => {
         return true;
       });
     }, 1);
   };
 
   const filter = (searchValues) => {
-    const filterData = data.filter((item, index) => {
+    const filterData = data.filter(item => {
       const itm = JSON.stringify(item);
       const result = searchValues.includes("")
         ? searchValues.some((word) => word !== "" && itm.includes(word))
