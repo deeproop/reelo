@@ -1,6 +1,6 @@
 import { useRef, useState} from "react";
 import { Box, Button, Typography } from "@mui/material";
-import LazyVirtualScrollDemo from "./LazyVirtualScrollDemo";
+import LazyVirtualScrollDemo from "./LazyVirtualScroll";
 import Dropdown from "./Drop";
 import { Toast } from 'primereact/toast';
 
