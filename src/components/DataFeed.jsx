@@ -1,7 +1,8 @@
-import { useState} from "react";
+import { useRef, useState} from "react";
 import { Box, Button, Typography } from "@mui/material";
 import LazyVirtualScrollDemo from "./LazyVirtualScrollDemo";
 import Dropdown from "./Drop";
+import { Toast } from 'primereact/toast';
 
 const DataFeed = ({ data }) => {
   const [planet, setPlanet] = useState("");
@@ -13,8 +14,16 @@ const DataFeed = ({ data }) => {
   const [searchValues, setSearchValues] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [check, setCheck] = useState(true);
+  
 
-  const handleSearch = () => {
+  const toastBottomCenter = useRef(null);
+  const showMessage = (event, ref, severity) => {
+    const label = "You must select something";
+
+    ref.current.show({ severity: 'warn', summary: label, life: 3000 });
+  };
+
+  const handleSearch = (e) => {
     const newValues = [
       planet,
       host,
@@ -22,9 +31,10 @@ const DataFeed = ({ data }) => {
       discoveryYear,
       discoveryFacility,
     ];
-    console.log(newValues.includes(""))
+    const allEmptyStrings = newValues.every(item => item === "");
+
     setSearchValues(newValues);
-    setSearch(true);
+    allEmptyStrings ? showMessage(e, toastBottomCenter, 'error') : setSearch(true);
     filter(newValues);
   };
 
@@ -55,6 +65,7 @@ const DataFeed = ({ data }) => {
     <Box>
       <Box>
         <Box display="flex" justifyContent="center">
+        <Toast ref={toastBottomCenter} position="bottom-center" />
           {check && (
             <>
               <Dropdown
